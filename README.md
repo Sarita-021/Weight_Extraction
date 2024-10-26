@@ -16,9 +16,6 @@ The dataset consists of the following columns:
 5. **entity_value:** Product entity value. For eg: “34 gram” 
     Note: For test.csv, you will not see the column `entity_value` as it is the target variable.
 
-### Output Format:
-
-The output file should be a csv with 2 columns:
 
 1. **index:** The unique identifier (ID) of the data sample. Note the index should match the test record index.
 2. **prediction:** A string which should have the following format: “x unit” where x is a float number in standard formatting and unit is one of the allowed units (allowed units are mentioned in the Appendix). The two values should be concatenated and have a space between them. For eg: “2 gram”, “12.5 centimetre”, “2.56 ounce” are valid. Few invalid cases: “2 gms”, “60 ounce/1.7 kilogram”, “2.2e2 kilogram” etc.
@@ -45,23 +42,6 @@ The output file should be a csv with 2 columns:
 1. You will be provided with a sample output file and a sanity checker file. Format your output to match the sample output file exactly and pass it through the sanity checker to ensure its validity. Note: If the file does not pass through the sanity checker, it will not be evaluated. You should recieve a message like `Parsing successfull for file: ...csv` if the output file is correctly formatted.
 
 2. You are given the list of allowed units in constants.py and also in Appendix. Your outputs must be in these units. Predictions using any other units will be considered invalid during validation.
-
-### Evaluation Criteria
-
-Submissions will be evaluated based on F1 score, which are standard measures of prediction accuracy for classification and extraction problems.
-
-Let GT = Ground truth value for a sample and OUT be output prediction from the model for a sample. Then we classify the predictions into one of the 4 classes with the following logic: 
-
-1. *True Positives* - If OUT != `""` and GT != `""` and OUT == GT
-2. *False Positives* - If OUT != `""` and GT != `""` and OUT != GT
-3. *False Positives* - If OUT != `""` and GT == `""`
-4. *False Negatives* - If OUT == `""` and GT != `""`
-5. *True Negatives* - If OUT == `""` and GT == `""` 
-
-Then, F1 score = 2*Precision*Recall/(Precision + Recall) where:
-
-1. Precision = True Positives/(True Positives + False Positives)
-2. Recall = True Positives/(True Positives + False Negatives)
 
 ### Submission File
 
